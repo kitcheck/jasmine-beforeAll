@@ -23,7 +23,7 @@
 		}
 	};
 
-	jasmine.Runner.prototype.beforeAll =
+	// jasmine.Runner.prototype.beforeAll =
 	jasmine.Suite.prototype.beforeAll = function(beforeAllFunction) {
 		beforeAllFunction.typeName = 'beforeAll';
 		this.beforeAll_ || (this.beforeAll_ = []);
@@ -78,7 +78,7 @@
 		}
 	};
 
-	jasmine.Runner.prototype.afterAll =
+	// jasmine.Runner.prototype.afterAll =
 	jasmine.Suite.prototype.afterAll = function(afterAllFunction) {
 		afterAllFunction.typeName = 'afterAll';
 		if(!this.afterAll_) {
@@ -97,8 +97,8 @@
 	/* Monkey-patch Suite.finish and Runner.finishCallback to execute any registered
 	   afterAll callbacks (if any specs were run)
 	*/
-	patchFinish(jasmine.Suite, 'finish');
-	patchFinish(jasmine.Runner, 'finishCallback');
+	// patchFinish(jasmine.Suite, 'finish');
+	// patchFinish(jasmine.Runner, 'finishCallback');
 
 	function patchFinish(Runnable, finishMethod) {
 		var runnableFinish = Runnable.prototype[finishMethod];
@@ -115,10 +115,10 @@
 				});
 			} else {
 				runnableFinish.call(runnable, onComplete);
-			}	 
+			}
 		};
 	}
-	
+
 })(
 	(typeof window == "object" && window) || (typeof global == "object" && global),
 	jasmine || require('jasmine')
